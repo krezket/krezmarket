@@ -10,8 +10,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <ThemedText>Discover</ThemedText>
+      <ThemedText>Cart</ThemedText>
     </View>
   );
 }
-

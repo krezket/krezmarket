@@ -1,12 +1,13 @@
-import React from 'react';
 import { Tabs } from 'expo-router';
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import React from 'react';
 
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 
-export default function RootLayout() {
+export default function TabLayout() {
     const colorScheme = useColorScheme();
+
     return (
         <Tabs
             screenOptions={{
@@ -23,29 +24,16 @@ export default function RootLayout() {
                     ),
                 }}
             />
-
                 <Tabs.Screen
-                name="profile"
+                name="explore"
                 options={{
-                    title: 'Profile',
+                    title: 'Explore',
                     tabBarLabel: () => null,
                     tabBarIcon: ({ color, focused }) => (
-                        <TabBarIcon name={focused ? 'menu' : 'menu-outline'} color={color} />
-                    ),
-                }}
-            />
-
-                <Tabs.Screen
-                name="cart"
-                options={{
-                    title: 'Cart',
-                    tabBarLabel: () => null,
-                    tabBarIcon: ({ color, focused }) => (
-                        <TabBarIcon name={focused ? 'cart' : 'cart-outline'} color={color} />
+                        <TabBarIcon name={focused ? 'search' : 'search-outline'} color={color} />
                     ),
                 }}
             />
             </Tabs>
     );
 }
-
