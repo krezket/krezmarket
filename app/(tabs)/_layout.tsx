@@ -13,13 +13,36 @@ export default function RootLayout() {
                 tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
                 headerShown: false,
             }}>
+
                 <Tabs.Screen
                 name="index"
                 options={{
                     title: 'Home',
                     tabBarLabel: () => null,
                     tabBarIcon: ({ color, focused }) => (
-                        <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+                        <TabBarIcon name={focused ? 'globe' : 'globe-outline'} color={color} />
+                    ),
+                }}
+            />
+
+                <Tabs.Screen
+                name="search"
+                options={{
+                    title: 'Search',
+                    tabBarLabel: () => null,
+                    tabBarIcon: ({ color, focused }) => (
+                        <TabBarIcon name={focused ? 'search' : 'search-outline'} color={color} />
+                    ),
+                }}
+            />
+
+                <Tabs.Screen
+                name="notifications"
+                options={{
+                    title: 'Notifications',
+                    tabBarLabel: () => null,
+                    tabBarIcon: ({ color, focused }) => (
+                        <TabBarIcon name={focused ? 'heart' : 'heart-outline'} color={color} />
                     ),
                 }}
             />
@@ -34,18 +57,6 @@ export default function RootLayout() {
                     ),
                 }}
             />
-
-                <Tabs.Screen
-                name="cart"
-                options={{
-                    title: 'Cart',
-                    tabBarLabel: () => null,
-                    tabBarIcon: ({ color, focused }) => (
-                        <TabBarIcon name={focused ? 'cart' : 'cart-outline'} color={color} />
-                    ),
-                }}
-            />
             </Tabs>
     );
 }
-

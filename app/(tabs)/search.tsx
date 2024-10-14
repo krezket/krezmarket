@@ -4,7 +4,7 @@ import { ThemedText } from '@/components/ThemedText';
 export default function Index() {
   return (
     <View style={styles.view}>
-      <ThemedText>Discover</ThemedText>
+        <TextInput placeholder="search"/>
     </View>
   );
 }
@@ -16,3 +16,4 @@ const styles = StyleSheet.create({
         alignItems: "center",
     }
 })
+
