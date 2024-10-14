@@ -1,3 +1,4 @@
+import React from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { ThemedText } from '@/components/ThemedText';
 
