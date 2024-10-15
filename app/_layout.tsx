@@ -11,6 +11,9 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import TabLayout from "@/app/(tabs)/_layout";
 import index from "@/app/index";
 
+import LogInScreen from "./screens/LogInScreen/LogInScreen";
+import SignUpScreen from "./screens/SignUpScreen/SignUpScreen";
+
 const Stack = createNativeStackNavigator();
 
 function RootNavigator() {
@@ -27,6 +30,8 @@ function RootNavigator() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack.Navigator>
         <Stack.Screen name="index" component={index} options={{ headerShown: false }} />
+        <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="LogInScreen" component={LogInScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </ThemeProvider>
   );

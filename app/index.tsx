@@ -9,15 +9,24 @@ export default function Index() {
   const theme = useColorScheme() ?? 'light';
   console.log(theme)
 
+  const dynamicStyles = StyleSheet.create({
+    text: {
+        color: theme === "light" ? Colors.dark.text : Colors.light.text,
+    },
+    button: {
+        backgroundColor: theme === "dark" ? "white" : "black",
+    },
+  });
+
     return (
         <View style={styles.mainCon}>
             <View style={styles.linkCon}>
-                <Pressable onPress={() => { navigation.navigate('SignUpAnimated' as never) }}>
-                    <ThemedText>Sign up and get started</ThemedText>
+                <Pressable onPress={() => { navigation.navigate('SignUpScreen' as never) }} style={dynamicStyles.button}>
+                    <ThemedText style={dynamicStyles.text}>Sign up and get started</ThemedText>
                 </Pressable>
                 <ThemedText>or</ThemedText>
-                <Pressable onPress={() => { navigation.navigate('LogInScreen' as never) }}>
-                    <ThemedText>Log in</ThemedText>
+                <Pressable onPress={() => { navigation.navigate('LogInScreen' as never) }} style={dynamicStyles.button}>
+                    <ThemedText style={dynamicStyles.text}>Log in</ThemedText>
                 </Pressable>
             </View>
         </View>
@@ -33,8 +42,5 @@ const styles = StyleSheet.create({
         height: 200,
         alignItems: "center",
         justifyContent: "space-between",
-    },
-    button: {
-        backgroundColor: "black",
     },
 });
