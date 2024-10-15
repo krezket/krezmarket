@@ -21,9 +21,11 @@ function RootNavigator() {
   const colorScheme = useColorScheme();
 
   const RootStack = () => (
-    <Stack.Navigator>
-      <Stack.Screen name="TabLayout" component={TabLayout} options={{ headerShown: false }} />
-    </Stack.Navigator>
+    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <Stack.Navigator>
+        <Stack.Screen name="TabLayout" component={TabLayout} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </ThemeProvider>
   );
 
   const AuthStack = () => (
