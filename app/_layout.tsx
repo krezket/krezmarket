@@ -10,7 +10,7 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 
 import TabLayout from "@/app/(tabs)/_layout";
 import index from "@/app/index";
-import Settings from "@/app/(tabs)/settings";
+import settings from "@/app/(tabs)/settings";
 
 import LogInScreen from "./screens/LogInScreen/LogInScreen";
 import SignUpScreen from "./screens/SignUpScreen/SignUpScreen";
@@ -25,7 +25,7 @@ function RootNavigator() {
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
             <Stack.Navigator>
                 <Stack.Screen name="TabLayout" component={TabLayout} options={{ headerShown: false }} />
-                <Stack.Screen name="Settings" component={Settings} options={{ headerTitle: "Settings" }} />
+                <Stack.Screen name="settings" component={settings} options={{ headerTitle: "Settings" }} />
             </Stack.Navigator>
          </ThemeProvider>
     );

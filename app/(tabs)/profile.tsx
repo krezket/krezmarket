@@ -8,7 +8,7 @@ import { ThemedText } from '@/components/ThemedText';
 
 import API from "@/utils/API";
 
-export default function Index() {
+export default function Index({ navigation }) {
     const [userId, setUserId] = useState<string>('');  
     const [username, setUsername] = useState<string>('');
     const [fullName, setFullName] = useState<string>('');
@@ -38,9 +38,9 @@ export default function Index() {
     return (
         <View >
             <View >
-                <View >
+                <View style={styles.button}>
                     <Text >{username}</Text>
-                    <Button title="settings" onPress={() => {navigation.navigate('settings' as never)}} />
+                    <Button title="Settings" onPress={() => {navigation.navigate('settings' as never)}} />
                 </View>
 
                 <View >
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: "center",
+        marginTop: 80,
     },
     buttonCon: {
         gap: 10,
