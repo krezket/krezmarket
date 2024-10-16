@@ -10,6 +10,7 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 
 import TabLayout from "@/app/(tabs)/_layout";
 import index from "@/app/index";
+import Settings from "@/app/(tabs)/settings";
 
 import LogInScreen from "./screens/LogInScreen/LogInScreen";
 import SignUpScreen from "./screens/SignUpScreen/SignUpScreen";
@@ -17,26 +18,27 @@ import SignUpScreen from "./screens/SignUpScreen/SignUpScreen";
 const Stack = createNativeStackNavigator();
 
 function RootNavigator() {
-  const { isLoading, userToken } = useContext(AuthContext) as any;
-  const colorScheme = useColorScheme();
+    const { isLoading, userToken } = useContext(AuthContext) as any;
+    const colorScheme = useColorScheme();
 
-  const RootStack = () => (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack.Navigator>
-        <Stack.Screen name="TabLayout" component={TabLayout} options={{ headerShown: false }} />
-      </Stack.Navigator>
-    </ThemeProvider>
-  );
+    const RootStack = () => (
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+            <Stack.Navigator>
+                <Stack.Screen name="TabLayout" component={TabLayout} options={{ headerShown: false }} />
+                <Stack.Screen name="Settings" component={Settings} options={{ headerTitle: "Settings" }} />
+            </Stack.Navigator>
+         </ThemeProvider>
+    );
 
-  const AuthStack = () => (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack.Navigator>
-        <Stack.Screen name="index" component={index} options={{ headerShown: false }} />
-        <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="LogInScreen" component={LogInScreen} options={{ headerShown: false }} />
-      </Stack.Navigator>
-    </ThemeProvider>
-  );
+    const AuthStack = () => (
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+            <Stack.Navigator>
+                <Stack.Screen name="index" component={index} options={{ headerShown: false }} />
+                <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="LogInScreen" component={LogInScreen} options={{ headerShown: false }} />
+            </Stack.Navigator>
+         </ThemeProvider>
+    );
 
   if (isLoading) {
     return <ActivityIndicator size="large" color={'blue'} />;

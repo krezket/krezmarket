@@ -20,6 +20,9 @@ export default function Index() {
 
     return (
         <View style={styles.mainCon}>
+            <View style={styles.headerCon}>
+                <ThemedText>KREZMARKET</ThemedText>
+            </View>
             <View style={styles.linkCon}>
                 <Pressable onPress={() => { navigation.navigate('SignUpScreen' as never) }} style={dynamicStyles.button}>
                     <ThemedText style={dynamicStyles.text}>Sign up and get started</ThemedText>
@@ -36,11 +39,16 @@ export default function Index() {
 const styles = StyleSheet.create({
     mainCon: {
         flex: 1,
-        justifyContent: "flex-end",
+        justifyContent: "space-between",
+    },
+    headerCon: {
+        alignItems: "center",
+        marginTop: 80,
     },
     linkCon: {
         height: 200,
         alignItems: "center",
         justifyContent: "space-between",
+        paddingBottom: 80,
     },
 });

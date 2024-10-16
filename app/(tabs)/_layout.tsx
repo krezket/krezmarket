@@ -1,21 +1,28 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import index from "./index";
+import search from "./search";
+import notifications from "./notifications";
+import profile from "./profile";
 
+Tab = createBottomTabNavigator();
 export default function RootLayout() {
     const colorScheme = useColorScheme();
     return (
-        <Tabs
+        <Tab.Navigator
             screenOptions={{
                 tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
                 headerShown: false,
             }}>
 
-                <Tabs.Screen
+                <Tab.Screen
                 name="index"
+                component={index}
                 options={{
                     title: 'Home',
                     tabBarLabel: () => null,
@@ -25,8 +32,9 @@ export default function RootLayout() {
                 }}
             />
 
-                <Tabs.Screen
+                <Tab.Screen
                 name="search"
+                component={search}
                 options={{
                     title: 'Search',
                     tabBarLabel: () => null,
@@ -36,8 +44,9 @@ export default function RootLayout() {
                 }}
             />
 
-                <Tabs.Screen
+                <Tab.Screen
                 name="notifications"
+                component={notifications}
                 options={{
                     title: 'Notifications',
                     tabBarLabel: () => null,
@@ -47,8 +56,9 @@ export default function RootLayout() {
                 }}
             />
 
-                <Tabs.Screen
+                <Tab.Screen
                 name="profile"
+                component={profile}
                 options={{
                     title: 'Profile',
                     tabBarLabel: () => null,
@@ -57,6 +67,6 @@ export default function RootLayout() {
                     ),
                 }}
             />
-            </Tabs>
+            </Tab.Navigator>
     );
 }
