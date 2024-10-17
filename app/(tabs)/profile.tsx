@@ -36,46 +36,47 @@ export default function Index({ navigation }) {
     }, []);
 
     return (
-        <View >
-            <View >
-                <View style={styles.button}>
-                    <Text >{username}</Text>
-                    <Button title="Settings" onPress={() => {navigation.navigate('settings' as never)}} />
-                </View>
+        <View style={styles.profileCon}>
 
-                <View >
-                
-                    <View style={styles.info}>
-                        <Text >Following: {subscriptions.length}</Text>
-                        <Text >Basket: {basket.length}</Text>
-                    </View>
-
-                </View>
-
-                <View style={styles.names}>
-                    <Text >{fullName}</Text>
-                    <Text >{bio}</Text>
-                </View>
+            <View style={styles.button}>
+                <Button title="Settings" onPress={() => {navigation.navigate('settings' as never)}} />
             </View>
+
+                <View style={styles.name}>
+                    <ThemedText>{username}</ThemedText>
+                    <ThemedText>{fullName}</ThemedText>
+                </View>
+
+                <View style={styles.bio}>
+                    <ThemedText>{bio}</ThemedText>
+                </View>
+
 
                 <View style={styles.bottom}>
+                    <ThemedText>Following: {subscriptions.length}</ThemedText>
+                    <ThemedText>Basket: {basket.length}</ThemedText>
                 </View>
 
-            </View>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    bottom: {
-        flexDirection: "column",
+    profileCon: {
         justifyContent: "space-between",
-        height: "30%",
+        height: "100vh",
     },
-    names: {
+    bottom: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginLeft: 10,
+        marginRight: 10,
+    },
+    name: {
         flexDirection: "column",
         gap: 20,
     },
-    info: {
+    bio: {
         flexDirection: "row",
         justifyContent: "center",
         paddingRight: 20,
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: "center",
-        marginTop: 80,
+        marginTop: 50,
     },
     buttonCon: {
         gap: 10,

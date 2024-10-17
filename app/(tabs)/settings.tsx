@@ -4,29 +4,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Colors } from '@/constants/Colors';
 
 import { AuthContext } from '@/context/AuthContext';
+import API from '@/utils/API';
 
 export default function Profile({ navigation })  {
     const theme = useColorScheme() ?? 'light';
-    const [userId, setUserId] = useState<string>('');  
     const {logout} = useContext(AuthContext) as any;
-
-    useEffect(() => {
-        const loadId = async () => {
-            const id = await AsyncStorage.getItem('id');
-            setUserId(id);
-            try {
-                const data = await API.getProfile(id);
-                setUsername(data.username);
-                setFullName(data.fullName);
-                setBio(data.bio);
-                setSubscriptions(data.subscriptions);
-                setBasket(data.basket);
-            } catch (error) {
-                console.log('Error loading user:', error);
-            }
-        };
-        loadId();
-    }, []);
 
     const logOut = async () => {  
         try { 
@@ -53,10 +35,6 @@ export default function Profile({ navigation })  {
             ]
         );
     }
-
-    useEffect(() => {
-        navigation.setOptions({ name: "bruh"}) 
-    }, [])
 
     const dynamicStyles = StyleSheet.create({
         userInfo: {
