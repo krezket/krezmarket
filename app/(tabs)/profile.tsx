@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Alert, StyleSheet, Button, Text, View } from "react-native";
+import { Alert, StyleSheet, Button, Text, View, ActivityIndicator } from "react-native";
+import { useFonts } from "expo-font";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "@/context/AuthContext";
@@ -16,6 +17,10 @@ export default function Index({ navigation }) {
     const [subscriptions, setSubscriptions] = useState([]);
     const [basket, setBasket] = useState([]);
     const {logout} = useContext(AuthContext) as any;
+
+    const [fontsLoaded] = useFonts({
+        'theboldfont': require('../../assets/fonts/theboldfont.ttf'),
+    });
 
     useEffect(() => {
         const loadId = async () => {
@@ -35,27 +40,32 @@ export default function Index({ navigation }) {
         loadId();
     }, []);
 
+        if (!fontsLoaded) {
+            return <ActivityIndicator size="large" color="#0000ff" />;
+        }
+
     return (
         <View style={styles.profileCon}>
 
-            <View style={styles.button}>
-                <Button title="Settings" onPress={() => {navigation.navigate('settings' as never)}} />
-            </View>
+	<View>
+	    <View style={styles.button}>
+		<Button title="Settings" onPress={() => {navigation.navigate('settings' as never)}} />
+	    </View>
 
-                <View style={styles.name}>
-                    <ThemedText>{username}</ThemedText>
-                    <ThemedText>{fullName}</ThemedText>
-                </View>
+	    <View style={styles.name}>
+		<ThemedText style={styles.bold}>{username}</ThemedText>
+		<ThemedText style={styles.bold}>{fullName}</ThemedText>
+	    </View>
 
-                <View style={styles.bio}>
-                    <ThemedText>{bio}</ThemedText>
-                </View>
+	    <View style={styles.bio}>
+		<ThemedText style={styles.bold}>{bio}</ThemedText>
+	    </View>
+	</View>
 
-
-                <View style={styles.bottom}>
-                    <ThemedText>Following: {subscriptions.length}</ThemedText>
-                    <ThemedText>Basket: {basket.length}</ThemedText>
-                </View>
+	    <View style={styles.bottom}>
+		<ThemedText style={styles.bold}>Following: {subscriptions.length}</ThemedText>
+		<ThemedText style={styles.bold}>Basket: {basket.length}</ThemedText>
+	    </View>
 
         </View>
     );
@@ -63,14 +73,15 @@ export default function Index({ navigation }) {
 
 const styles = StyleSheet.create({
     profileCon: {
+	flex: 1,
         justifyContent: "space-between",
         height: "100vh",
+        marginLeft: 10,
+        marginRight: 10,
     },
     bottom: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginLeft: 10,
-        marginRight: 10,
     },
     name: {
         flexDirection: "column",
@@ -83,11 +94,14 @@ const styles = StyleSheet.create({
         gap: 50,
     },
     button: {
-        alignItems: "center",
+        alignItems: "flex-end",
         marginTop: 50,
     },
     buttonCon: {
         gap: 10,
     },
+    bold: {
+	fontFamily: "theboldfont",
+    }
 })
 
