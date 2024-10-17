@@ -19,6 +19,7 @@ export default function Index({ navigation }) {
     const {logout} = useContext(AuthContext) as any;
 
     const [fontsLoaded] = useFonts({
+        'TS-Block-Bold': require('../../assets/fonts/TS-Block-Bold.ttf'),
         'theboldfont': require('../../assets/fonts/theboldfont.ttf'),
     });
 

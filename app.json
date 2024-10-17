@@ -31,7 +31,11 @@
       [
         "expo-font",
         {
-          "fonts": ["./app/assets/fonts/theboldfont.ttf"]
+          "fonts": [
+	    "./app/assets/fonts/TS-Block-Bold.ttf",
+	    "./app/assets/fonts/theboldfont.ttf",
+	    "./app/assets/fonts/FETTE.ttf"
+	  ]
         }
       ]
     ],
